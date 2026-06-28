@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wedding Surprise Experience</title>
+  <meta name="description" content="A cinematic wedding surprise experience." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="loading" class="loading-screen">
+    <div class="loading-orb"></div>
+    <p class="loading-text">Someone has prepared something special just for you...</p>
+  </div>
+
+  <div class="audio-consent" id="audioConsent">
+    <div class="audio-card">
+      <h1>Before we begin</h1>
+      <p>This experience uses soft music, ambient effects, animation, and fullscreen mode.</p>
+      <button id="startExperience" class="primary-btn">Begin the Surprise</button>
+      <button id="startMuted" class="ghost-btn">Begin Without Sound</button>
+    </div>
+  </div>
+
+  <canvas id="particles"></canvas>
+  <div class="petals" id="petals"></div>
+  <div class="aurora"></div>
+
+  <audio id="bgMusic" loop preload="auto">
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_2cc5d9794d.mp3?filename=romantic-piano-110560.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="chime" preload="auto">
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_69031d5815.mp3?filename=magical-twinkle-242245.mp3" type="audio/mpeg">
+  </audio>
+
+  <main class="app" id="app">
+    <section class="frame active intro" data-frame="0">
+      <div class="glass-card hero-card">
+        <p class="eyebrow">A private message</p>
+        <h1 class="script-title">For the Bride</h1>
+        <p class="typewriter" data-text="Tonight is not just a ceremony. It is a memory being created in front of everyone who loves you."></p>
+        <button class="primary-btn next-btn">Open the First Memory</button>
+      </div>
+    </section>
+
+    <section class="frame memory" data-frame="1" style="--bg:url('assets/image1.png')">
+      <div class="media-bg"></div>
+      <div class="glass-card">
+        <p class="eyebrow">Memory One</p>
+        <h2>Where did your story begin?</h2>
+        <p class="typewriter" data-text="Every love story has a first chapter. Some people call it coincidence. We call it destiny."></p>
+        <div class="choices">
+          <button class="choice">The first conversation</button>
+          <button class="choice">The first smile</button>
+          <button class="choice">The moment everything changed</button>
+        </div>
+        <p class="reveal">There are no wrong answers tonight. Every answer leads back to love.</p>
+      </div>
+    </section>
+
+    <section class="frame memory" data-frame="2" style="--bg:url('assets/image2.png')">
+      <div class="media-bg"></div>
+      <div class="glass-card">
+        <p class="eyebrow">Memory Two</p>
+        <h2>Complete the sentence</h2>
+        <p class="large-prompt">“The best thing about us is…”</p>
+        <input id="freeAnswer" class="answer-input" placeholder="Type anything from the heart" />
+        <button class="primary-btn answer-btn">Reveal</button>
+        <p class="reveal">The best thing about you is that love feels safe, warm, and real.</p>
+      </div>
+    </section>
+
+    <section class="frame memory" data-frame="3" style="--bg:url('assets/image3.png')">
+      <div class="media-bg"></div>
+      <div class="glass-card">
+        <p class="eyebrow">Memory Three</p>
+        <h2>Unscramble this word</h2>
+        <p class="scramble">R E V O F E R</p>
+        <p class="hint">Hint: what today has made official.</p>
+        <button class="choice">FOREVER</button>
+        <button class="choice">FAVOUR</button>
+        <button class="choice">FERVOUR</button>
+        <p class="reveal">Forever is not just a word. Today, it became a promise.</p>
+      </div>
+    </section>
+
+    <section class="frame memory" data-frame="4" style="--bg:url('assets/image4.png')">
+      <div class="media-bg"></div>
+      <div class="glass-card">
+        <p class="eyebrow">Memory Four</p>
+        <h2>Choose a promise</h2>
+        <div class="promise-grid">
+          <button class="choice">To choose you daily</button>
+          <button class="choice">To protect your peace</button>
+          <button class="choice">To build with you</button>
+          <button class="choice">To laugh with you</button>
+        </div>
+        <p class="reveal">The real answer is all of them. Love is not one promise. It is a thousand small promises kept.</p>
+      </div>
+    </section>
+
+    <section class="frame memory" data-frame="5" style="--bg:url('assets/image5.png')">
+      <div class="media-bg"></div>
+      <div class="glass-card">
+        <p class="eyebrow">Final Memory</p>
+        <h2>The final reveal begins in</h2>
+        <div class="countdown" id="countdown">5</div>
+        <p class="typewriter" data-text="Look around. These people are not just watching a wedding. They are witnessing the beginning of your home."></p>
+      </div>
+    </section>
+
+    <section class="frame finale" data-frame="6">
+      <video class="final-video" id="finalVideo" src="assets/video1.mp4" playsinline controls></video>
+      <div class="glass-card final-message">
+        <p class="eyebrow">From him, to you</p>
+        <h2 class="script-title">This is only the beginning</h2>
+        <p>Today, before everyone we love, I choose you again. Not only for the beautiful moments, but for every ordinary day we will turn into something meaningful together.</p>
+        <p>I cannot promise that life will always be perfect. But I promise that you will never walk through it alone.</p>
+        <button id="replay" class="ghost-btn">Replay Experience</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
