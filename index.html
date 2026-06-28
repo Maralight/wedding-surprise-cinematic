@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wedding Surprise</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="cursorHeart" aria-hidden="true">♥</div>
+  <canvas id="particles"></canvas>
+  <div id="roseLayer" aria-hidden="true"></div>
+  <div id="pointerGlow" aria-hidden="true"></div>
+
+  <audio id="bgMusic" loop preload="auto">
+    <source src="assets/music.mp3" type="audio/mpeg" />
+  </audio>
+  <audio id="softChime" preload="auto">
+    <source src="assets/chime.mp3" type="audio/mpeg" />
+  </audio>
+
+  <main id="app">
+    <section class="screen active loading-screen" data-screen="0">
+      <div class="glass hero-card">
+        <p class="eyebrow">A private moment</p>
+        <h1 class="script">Someone has prepared something special just for you...</h1>
+        <p class="subtext">Take a breath. Smile. Let the memories open one by one.</p>
+        <button class="primary-btn" id="startBtn">Begin the Surprise</button>
+        <button class="ghost-btn" id="fullscreenBtn">Enter Fullscreen</button>
+      </div>
+    </section>
+
+    <section class="screen memory-screen" data-screen="1">
+      <div class="media-bg kenburns" style="background-image:url('assets/image1.png')"></div>
+      <div class="glass question-card">
+        <p class="eyebrow">Memory 01</p>
+        <h2>Where did this love story begin to feel real?</h2>
+        <div class="choices">
+          <button class="choice" data-response="That first spark was not ordinary. It became the beginning of a story worth celebrating.">The first conversation</button>
+          <button class="choice" data-response="Sometimes one look tells the heart what words are still trying to understand.">The first proper date</button>
+          <button class="choice" data-response="It was not one moment alone. It was every little thing, building quietly into forever.">All of the above and more</button>
+        </div>
+      </div>
+      <div class="glass reveal-card hidden">
+        <p class="typewrite"></p>
+        <button class="primary-btn continue">Continue</button>
+      </div>
+    </section>
+
+    <section class="screen memory-screen" data-screen="2">
+      <div class="media-bg kenburns" style="background-image:url('assets/image2.png')"></div>
+      <div class="glass question-card">
+        <p class="eyebrow">Memory 02</p>
+        <h2>What is your favourite thing about both of you?</h2>
+        <p class="small">Type anything. Your answer becomes part of the next message.</p>
+        <input id="favoriteInput" class="text-input" type="text" placeholder="Example: the way we laugh together" autocomplete="off" />
+        <button class="primary-btn" id="favoriteSubmit">Enter</button>
+      </div>
+      <div class="glass reveal-card hidden">
+        <p class="typewrite"></p>
+        <button class="primary-btn continue">Continue</button>
+      </div>
+    </section>
+
+    <section class="screen memory-screen" data-screen="3">
+      <div class="media-bg kenburns" style="background-image:url('assets/image3.png')"></div>
+      <div class="glass question-card">
+        <p class="eyebrow">Memory 03</p>
+        <h2>Which version of love best describes today?</h2>
+        <div class="choices">
+          <button class="choice" data-response="A love that is gentle enough to comfort and strong enough to build a lifetime.">Peaceful love</button>
+          <button class="choice" data-response="A love that still knows how to laugh, tease, dance, and choose joy.">Playful love</button>
+          <button class="choice" data-response="The truth is, this love is not one thing. It is peace, joy, laughter, grace, and so much more.">All of the above and more</button>
+        </div>
+      </div>
+      <div class="glass reveal-card hidden">
+        <p class="typewrite"></p>
+        <button class="primary-btn continue">Continue</button>
+      </div>
+    </section>
+
+    <section class="screen memory-screen" data-screen="4">
+      <div class="media-bg kenburns" style="background-image:url('assets/image4.png')"></div>
+      <div class="glass question-card">
+        <p class="eyebrow">Memory 04</p>
+        <h2>Complete this promise:</h2>
+        <p class="quote-line">“In this marriage, I pray we always protect…”</p>
+        <input id="promiseInput" class="text-input" type="text" placeholder="Example: our peace, joy and friendship" autocomplete="off" />
+        <button class="primary-btn" id="promiseSubmit">Enter</button>
+      </div>
+      <div class="glass reveal-card hidden">
+        <p class="typewrite"></p>
+        <button class="primary-btn continue">Continue</button>
+      </div>
+    </section>
+
+    <section class="screen memory-screen" data-screen="5">
+      <div class="media-bg kenburns" style="background-image:url('assets/image5.png')"></div>
+      <div class="glass question-card">
+        <p class="eyebrow">Memory 05</p>
+        <h2>What should this new chapter be filled with?</h2>
+        <div class="choices">
+          <button class="choice" data-response="May this chapter be filled with grace, laughter, ease, and the kind of partnership that makes life lighter.">Grace and laughter</button>
+          <button class="choice" data-response="May this chapter be filled with friendship, loyalty, softness, and the courage to keep choosing each other.">Friendship and loyalty</button>
+          <button class="choice" data-response="May this chapter be filled with all of the above and even more blessings than words can hold.">All of the above and more</button>
+        </div>
+      </div>
+      <div class="glass reveal-card hidden">
+        <p class="typewrite"></p>
+        <button class="primary-btn continue">Continue</button>
+      </div>
+    </section>
+
+    <section class="screen countdown-screen" data-screen="6">
+      <div class="glass hero-card">
+        <p class="eyebrow">Final Reveal</p>
+        <h2>One last thing has been prepared for you.</h2>
+        <p class="subtext">When you are ready, press the button. The room can count with you.</p>
+        <button class="primary-btn" id="countdownBtn">Start Countdown</button>
+        <div id="countdownNumber" class="countdown-number hidden">5</div>
+      </div>
+    </section>
+
+    <section class="screen final-screen" data-screen="7">
+      <video id="finalVideo" class="final-video" muted playsinline preload="metadata">
+        <source src="assets/video1.mp4" type="video/mp4" />
+      </video>
+      <div class="video-overlay"></div>
+      <div class="glass final-message">
+        <p class="eyebrow">For you</p>
+        <h1 class="script">This is only the beginning.</h1>
+        <p id="finalText">Today is not just a ceremony. It is the start of a lifetime of choosing each other, protecting joy, and building a home where love feels safe.</p>
+        <button class="primary-btn" id="replayBtn">Replay Moment</button>
+      </div>
+      <canvas id="confetti"></canvas>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
